@@ -4,7 +4,7 @@
 //#pragma comment(lib,"ws2_32.lib")
 # pragma warning(disable:4996)
 using namespace std;
-#define BUFFER_SIZE 256
+#define BUFFER_SIZE 512
 #define PORT 8080
 
 class Client

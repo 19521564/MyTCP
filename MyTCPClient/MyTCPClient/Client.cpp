@@ -12,8 +12,9 @@ Client::Client(string detiAdress)
 	if (iWsaStartup != 0)
 	{
 		cout << "WSAStartup Failed" << endl;
+		exit(0);
 	}
-	cout << "WSAStartup Success" << endl;
+	//cout << "WSAStartup Success" << endl;
 
 	// Socket Creation
 
@@ -21,8 +22,9 @@ Client::Client(string detiAdress)
 	if (TCPClientSocket == INVALID_SOCKET)
 	{
 		cout << "TCP Client Socket Creation failed" << WSAGetLastError() << endl;
+		exit(0);
 	}
-	cout << "TCP client socket creation success"<<endl;
+	//cout << "TCP client socket creation success"<<endl;
 	// Fill the structure
 
 	TCPServerAdd.sin_family = AF_INET;
@@ -32,39 +34,42 @@ Client::Client(string detiAdress)
 
 void Client::isConnect()
 {
-	// STEP-4 Connect fun
+	//  Connect fun
 
 	int iConnect = connect(TCPClientSocket, (SOCKADDR*)&TCPServerAdd, sizeof(TCPServerAdd));
 	if (iConnect == SOCKET_ERROR)
 	{
 		cout << "Connection failed & Error No ->" << WSAGetLastError() << endl;
+		exit(0);
 	}
 	cout << "Connection success" << endl;
 }
 
 char* Client::receiveData()
 {
-	// STEP -5 Recv Data from Server
+	//  Recv Data from Server
 
 	int iRecv = recv(TCPClientSocket, RecvBuffer, iBufferSize, 0);
 	if (iRecv == SOCKET_ERROR)
 	{
 		cout << "Receiving Failed & Error No->" << WSAGetLastError() << endl;
+		exit(0);
 	}
-	cout << "Receive fun success" << endl;
+	//cout << "Receive fun success" << endl;
 	return RecvBuffer;
 }
 
 void Client::sendData(char* data)
 {
-	// STEP-6 Send Data to the server
+	// Send Data to the server
 
 	int iSend = send(TCPClientSocket, data, iBufferSize, 0);
 	if (iSend == SOCKET_ERROR)
 	{
 		cout << "Sending Failed & Error No->" << WSAGetLastError() << endl;
+		exit(0);
 	}
-	cout << "Data sending success" << endl;
+	//cout << "Data sending success" << endl;
 }
 
 Client::~Client()
@@ -73,8 +78,10 @@ Client::~Client()
 	if (iCloseSocket == SOCKET_ERROR)
 	{
 		cout << "Closing Failed & Error No->" << WSAGetLastError() << endl;
+		exit(0);
 	}
-	cout << "Closing Socket success" << endl;
+	//cout << "Closing Socket success" << endl;
+	system("PAUSE");
 }
 
 void Client::setBufferSize(int newBufferSize) {

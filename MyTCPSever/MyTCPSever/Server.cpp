@@ -13,7 +13,7 @@ Server::Server(string destiAdress)
 		cout << "WSAStartup Failed" << endl;
 		exit(0);
 	}
-	cout << "WSAStartup Success" << endl;
+	//cout << "WSAStartup Success" << endl;
 	// Fill the structure
 
 	TCPServerAdd.sin_family = AF_INET;
@@ -35,9 +35,10 @@ void Server::isConnect()
 	if (iBind == SOCKET_ERROR)
 	{
 		cout << "Binding Failed &Error No->" << WSAGetLastError() << endl;
+		exit(0);
 
 	}
-	cout << "Binding success" << endl;
+	//cout << "Binding success" << endl;
 
 	// Listen fun------
 
@@ -45,8 +46,9 @@ void Server::isConnect()
 	if (iListen == SOCKET_ERROR)
 	{
 		cout << "Listen fun failed &error No->" << WSAGetLastError();
+		exit(0);
 	}
-	cout << "Listen fun success" << endl;
+	//cout << "Listen fun success" << endl;
 
 	// Accept--
 
@@ -54,8 +56,9 @@ void Server::isConnect()
 	if (sAcceptSocket == INVALID_SOCKET)
 	{
 		cout << "Accept failed & Error No ->" << WSAGetLastError() << endl;
+		exit(0);
 	}
-	cout << "Accept fun success" << endl;
+	cout << "Accept success" << endl;
 
 }
 
@@ -76,8 +79,9 @@ void Server::sendData(char* data)
 	if (iSend == SOCKET_ERROR)
 	{
 		cout << "Sending Failed & Error No->" << WSAGetLastError() << endl;
+		exit(0);
 	}
-	cout << "Send fun success" << endl;
+	//cout << "Send  success" << endl;
 
 }
 
@@ -88,8 +92,9 @@ char* Server::receiveData()
 	if (iRecv == SOCKET_ERROR)
 	{
 		cout << "Receiving Failed & Error No->" << WSAGetLastError() << endl;
+		exit(0);
 	}
-	cout << "Receive fun success" << endl;
+	//cout << "Receive fun success" << endl;
 
 	return RecvBuffer;
 }
@@ -103,7 +108,8 @@ Server::~Server()
 	if (iCloseSocket == SOCKET_ERROR)
 	{
 		cout << "Closing Failed & Error No->" << WSAGetLastError() << endl;
+		exit(0);
 	}
-	cout << "Cleanup fun success" << endl;
+	//cout << "Cleanup fun success" << endl;
 	system("PAUSE");
 }
