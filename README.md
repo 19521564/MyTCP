@@ -5,7 +5,7 @@
 
 * C++
 # RUN PROGRAMS
-You need 2 command line and cd go to folder ```Release```
+You need 2 command line and cd to folder ```Release```
 
 ## Step 1:
 
