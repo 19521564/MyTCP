@@ -25,4 +25,6 @@ Example: ```SendText hello world!```
 
 * If you want to send file, in command line 1, run: ```SendFile <path> <size>```
 
+```<size>```<=512
+
 Example: ```SendFile C:/Users/DELL/Music/MyTCPSever/sample.txt 512```
